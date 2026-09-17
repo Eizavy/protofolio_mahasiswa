@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Portfolio Mahasiswa</title>
+    
     <style>
         *{
   margin: 0;
@@ -15,9 +16,8 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: black;
-
-    animation: rgb-cycle 5s infinite linear;
+    background-color: white;
+    color: black;
 }
 
 header {
@@ -33,13 +33,6 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-@keyframes rgb-cycle {
-    0%   { color: rgb(255 0 0); }
-    33%  { color: rgb(0 255 0); }
-    66%  { color: rgb(0 0 255); }
-    100% { color: rgb(255 0 0); }
 }
 
 .logo {
@@ -378,8 +371,6 @@ nav {
     transform: scale(1.2);
 }
     </style>
-
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -444,16 +435,16 @@ nav {
         <div class="hero-text">
 
             <p class="hero-subtitle">
-                SELAMAT DATANG DI PORTFOLIO SAYA
+                SELAMAT DATANG DI PORTFOLIO KAMI
             </p>
 
             <h1>
-                Halo, Saya
-                <span>Nama Mahasiswa</span>
+                Halo, Kami
+                <span>Kelompok AMOMAMI</span>
             </h1>
 
             <p class="hero-description">
-                Saya adalah mahasiswa Informatika yang memiliki
+                Kami adalah mahasiswa Informatika yang memiliki
                 ketertarikan pada teknologi, desain, dan pengembangan web.
             </p>
 
@@ -513,6 +504,39 @@ nav {
     </footer>
 
     <script src="script.js"></script>
+
+<script>
+    let slideIndex = 1; 
+    snowSlide(slideIndex);
+
+    function changeSlide(n) {
+        snowSlide(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        snowSlide(slideIndex = n);
+    }
+
+    function snowSlide(n) {
+        let i;
+        let slides = document.getElementsByClassName("slide");
+        let dots = document.getElementsByClassName("dot");
+
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+</script>
 
 </body>
 
