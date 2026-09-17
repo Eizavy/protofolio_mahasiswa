@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio Mahasiswa</title>
+    <style>
+        *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+
+    animation: rgb-cycle 5s infinite linear;
+}
+
+header {
+    background-color: white;
+    padding: 15px 60px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@keyframes rgb-cycle {
+    0%   { color: rgb(255 0 0); }
+    33%  { color: rgb(0 255 0); }
+    66%  { color: rgb(0 0 255); }
+    100% { color: rgb(255 0 0); }
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+
+    background-color: darkblue;
+    color: white;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.judul {
+    margin-right: auto;
+    margin-left: 15px;
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+
+/* =========================
+   LINK
+========================= */
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+
+    transition: 0.3s;
+}
+
+
+/* =========================
+   HOVER MENU
+========================= */
+
+.nav-menu a:hover {
+    color: #2563eb;
+}
+/* =========================
+   DROPDOWN
+========================= */
+
+.dropdown {
+    position: relative;
+}
+
+
+/* Menu dropdown */
+
+.dropdown-menu {
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    background-color: white;
+
+    min-width: 160px;
+
+    padding: 10px 0;
+
+    list-style: none;
+
+    border-radius: 10px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+    display: none;
+}
+
+
+/* Link dropdown */
+
+.dropdown-menu li a {
+    display: block;
+
+    padding: 10px 20px;
+
+    color: #333;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+}
+
+
+/* Hover pada item dropdown */
+
+.dropdown-menu li a:hover {
+    background-color: #f1f5f9;
+
+    color: #2563eb;
+}
+
+
+/* Menampilkan dropdown */
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 90vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 60px;
+
+    padding: 70px 8%;
+
+    background-color: #f5f7fa;
+}
+
+
+/* =========================
+   HERO TEXT
+========================= */
+
+.hero-text {
+    flex: 1;
+    max-width: 550px;
+}
+
+
+.hero-subtitle {
+    color: #2563eb;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+}
+
+
+.hero-text h1 {
+    font-size: 52px;
+    line-height: 1.15;
+
+    margin-bottom: 20px;
+}
+
+
+.hero-text h1 span {
+    display: block;
+
+    color: #2563eb;
+}
+
+
+.hero-description {
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    color: #666;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   HERO BUTTON
+========================= */
+
+.hero-button {
+    display: inline-block;
+
+    padding: 13px 25px;
+
+    background-color: #2563eb;
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.hero-button:hover {
+    background-color: #1d4ed8;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   SLIDESHOW
+========================= */
+
+.slideshow {
+    position: relative;
+
+    flex: 1;
+
+    max-width: 550px;
+
+    height: 400px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================
+   SLIDE
+========================= */
+
+.slide {
+    display: none;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+.slide.active {
+    display: block;
+}
+
+
+.slide img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =========================
+   BUTTON SLIDESHOW
+========================= */
+
+.prev,
+.next {
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background-color: rgba(0, 0, 0, 0.4);
+
+    color: white;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+
+.prev {
+    left: 15px;
+}
+
+
+.next {
+    right: 15px;
+}
+
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+/* =========================
+   INDICATOR
+========================= */
+
+.slide-indicators {
+    position: absolute;
+
+    bottom: 15px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 8px;
+}
+
+
+.dot {
+    width: 10px;
+    height: 10px;
+
+    background-color: rgba(255, 255, 255, 0.6);
+
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+
+.dot.active {
+    background-color: white;
+
+    transform: scale(1.2);
+}
+    </style>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+
+        <nav>
+
+            <!-- Logo -->
+            <div class="logo">
+                PM
+            </div>
+
+            <!-- Judul Website -->
+            <div class="judul">
+                Portfolio Mahasiswa
+            </div>
+
+            <!-- Navigation Menu -->
+           <ul class="nav-menu">
+
+    <li>
+        <a href="https://swu.ac.id/" target="_blank">Home</a>
+    </li>
+
+    <!-- Dropdown Profil -->
+    <li class="dropdown">
+
+        <a href="#profil" class="dropdown-link">
+            Profil
+        </a>
+
+        <ul class="dropdown-menu">
+
+            <li>
+                <a href="#pendidikan">Pendidikan</a>
+            </li>
+
+            <li>
+                <a href="#skill">Skill</a>
+            </li>
+
+        </ul>
+
+    </li>
+
+    <li>
+        <a href="#kontak">Kontak</a>
+    </li>
+
+</ul>
+    </header>
+
+    <!-- ================= CONTENT ================= -->
+    <main>
+
+    <!-- ================= HERO ================= -->
+
+    <section id="home" class="hero">
+
+        <!-- Teks Hero -->
+        <div class="hero-text">
+
+            <p class="hero-subtitle">
+                SELAMAT DATANG DI PORTFOLIO SAYA
+            </p>
+
+            <h1>
+                Halo, Saya
+                <span>Nama Mahasiswa</span>
+            </h1>
+
+            <p class="hero-description">
+                Saya adalah mahasiswa Informatika yang memiliki
+                ketertarikan pada teknologi, desain, dan pengembangan web.
+            </p>
+
+            <a href="https://youtu.be/dQw4w9WgXcQ?si=r3uVTX4TuVWOqs0R" target="_blank" class="hero-button">
+                Lihat Profile
+            </a>
+
+        </div>
+
+
+        <!-- Slideshow -->
+        <div class="slideshow">
+
+            <div class="slide active">
+                <img src="assets/images/slide1.jpg" alt="Foto Mahasiswa 1">
+            </div>
+
+            <div class="slide">
+                <img src="assets/images/slide2.jpg" alt="Foto Mahasiswa 2">
+            </div>
+
+            <div class="slide">
+                <img src="assets/images/slide3.jpg" alt="Foto Mahasiswa 3">
+            </div>
+
+
+            <!-- Tombol Navigasi -->
+            <button class="prev" onclick="changeSlide(-1)">&#10094;
+            </button>
+
+            <button class="next" onclick="changeSlide(1)">&#10095;
+            </button>
+
+
+            <!-- Indicator -->
+            <div class="slide-indicators">
+
+                <span class="dot active" onclick="currentSlide(1)"></span>
+
+                <span class="dot" onclick="currentSlide(2)"></span>
+
+                <span class="dot" onclick="currentSlide(3)"></span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+
+        <p> &copy; 2026 Portfolio Mahasiswa</p>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
